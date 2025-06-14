@@ -53,6 +53,21 @@
                 60%,
                 80% { transform: translateX(5px); }
             }
+
+            /* Day 2 */
+            .day2{
+                display: flex;
+                gap: 20px;
+            }
+            .day2 ul{
+                list-style: none;
+                cursor: pointer;
+                text-transform: uppercase;
+                display: flex;
+                gap: 20px;
+                border: 1px solid #ccc;
+                width: 15rem;
+            }
         </style>
     </head>
     <body>
@@ -82,6 +97,23 @@
                         password.classList.remove('shake')
                     }, 1000);"
                     >Submit</button>
+                </div>
+            </div>
+        </section>
+        <h1>Day 2</h1>
+        <section class="day">
+            <div class="day2">
+                <div><input type="color"></div>
+                <div>
+                    <ul>
+                        <li title="Home">Home</li>
+                        <li title="Blog">Blog</li>
+                        <li title="About">About</li>
+                    </ul>
+                </div>
+                <div>
+                    <input type="date" onchange="age.innerText=new Date().getFullYear()- new Date(this.value).getFullYear()"> 
+                    <p>Your age: <span id="age"></span></p>
                 </div>
             </div>
         </section>
