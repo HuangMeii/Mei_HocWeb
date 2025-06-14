@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mei học web</title>
+        <style>
+            .day1{
+                display: flex;
+                gap: 20px;
+            }
+            .day1 button{
+                all: unset; /* Làm sạch tất cả các thuộc tính mặc định của nút */
+                color: #fff;
+                padding: 15ps 25px;
+                font-size: 1rem;
+                background: #0c78d0;
+                padding: 5px 8px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: box-shadow 0.3s ease-in-out; /* ease-in-out - Kiểu chuyển động (bắt đầu chậm → nhanh → kết thúc chậm) */
+            }
+            .day1 .b1 button:hover{
+                box-shadow: 0 0 0 2px #fff, 0 0 0 4px #0c78d0;
+            }
+            .emoji p{
+                text-align: center;
+            }
+            .reverse input{
+                padding: 5px 10px;
+            }            
+            .copy input{
+                padding: 5px 10px;
+            }            
+            .fail-password input{
+                padding: 5px 10px;
+                margin-right: 1rem;
+            }
+            .shake{
+                border-color: red;
+                animation: shake 0.5s;
+            }
+            @keyframes shake{
+                0%, 
+                100% { transform: translateX(0); }
+
+                10%,
+                30%,
+                50%,
+                70%,
+                90% { transform: translateX(-5px); }
+
+                20%,
+                40%,
+                60%,
+                80% { transform: translateX(5px); }
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Day 1</h1>
+        <section class="day">
+            <div class="day1">
+                <div class="b1"><button>Hover Me</button></div>
+                <div class="emoji">
+                    <p id="emoji">😡</p>
+                    <input type="range" min="0" max="4" value="0" oninput="emoji.innerText = ['😡', '😠', '😐', '🙂', '😀'][this.value]"> 
+                </div>
+                <div class="reverse">
+                    <!-- Nội dung lật ngược  -->
+                    <input type="text" oninput="rev.innerText = this.value.split('').reverse().join('')" placeholder="Write somthing here...">
+                    <p>Nội dung sau khi lật: <span id="rev"></span></p>
+                </div>                  
+                <div class="copy">
+                    <input type="text" id="copyText" oninput="copiedText.innerText = this.value" placeholder="Need to copy something?">
+                    <button onclick="navigator.clipboard.writeText(copyText.value); this.innerText='Copied'">Copy</button>
+                    <p>Nội dung đã sao chép: <span id="copiedText"></span></p>
+                </div>
+                <div class="fail-password">
+                    <input type="password" id="password" placeholder="Password">
+                    <button 
+                    onclick="password.classList.add('shake'); 
+                    setTimeout(()=>{
+                        password.classList.remove('shake')
+                    }, 1000);"
+                    >Submit</button>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
