@@ -68,54 +68,288 @@
                 border: 1px solid #ccc;
                 width: 15rem;
             }
+            .day2 .u2 li{
+              margin-left: 2rem;
+            }
+            .day2 .u2 li::marker{
+              content: "📎";
+            }
+            .day2 .glow-fill{
+                position: relative;
+                color: #0ff;
+                border: 2px solid #0ff;
+                padding: 10px 20px;
+                cursor: pointer;
+                background: transparent;
+                transition: all 2s;
+            }            
+            .day2 .glow-fill::before{
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #0ff;
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform 0.5s ease;
+                z-index: -1;
+            }            
+            .day2 .glow-fill:hover::before{
+                transform: scaleX(1);
+            }
+            .day2 .glow-fill:hover{
+                color: white;
+                font-weight: bold;
+                background: #0ff;
+            }
+            .day2 input{
+                padding: 5px 10px;
+            }
+            
+            /* Animated Product Card */
+            .product-card {
+                position: relative;
+                width: 400px;
+                height: 200px;
+                background: linear-gradient(135deg, #ff0000, #cc0000);
+                border-radius: 20px;
+                border: 2px solid rgba(255,255,255,0.2);
+                overflow: hidden;
+                cursor: pointer;
+                transition: all 0.5s ease;
+                margin: 20px 0;
+            }
+            
+            .product-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, #ff3333, #ff0000);
+                transition: all 0.5s ease;
+                z-index: -1;
+            }
+            
+            .card-glow {
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+                transform: scale(0);
+                transition: transform 0.5s ease;
+                z-index: 1;
+            }
+            
+            .product-card:hover .card-glow {
+                transform: scale(1);
+                animation: glow-pulse 2s infinite;
+            }
+            
+            @keyframes glow-pulse {
+                0%, 100% { opacity: 0.3; }
+                50% { opacity: 0.6; }
+            }
+            
+            .card-content {
+                position: relative;
+                padding: 30px;
+                z-index: 2;
+                color: white;
+            }
+            
+            .product-logo {
+                font-size: 24px;
+                margin-bottom: 10px;
+                animation: float 3s ease-in-out infinite;
+            }
+            
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+            }
+            
+            .product-card h2 {
+                font-size: 24px;
+                font-weight: bold;
+                margin: 10px 0;
+                letter-spacing: 2px;
+            }
+            
+            .product-card p {
+                font-size: 12px;
+                opacity: 0.9;
+                margin-bottom: 20px;
+            }
+            
+            .export-btn {
+                background: rgba(255,255,255,0.2);
+                border: 1px solid rgba(255,255,255,0.3);
+                padding: 8px 16px;
+                border-radius: 20px;
+                color: white;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(10px);
+            }
+            
+            .export-btn:hover {
+                background: rgba(255,255,255,0.3);
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+            
+            .product-bottle {
+                position: absolute;
+                right: 20px;
+                top: 10px;
+                width: 80px;
+                height: 180px;
+                z-index: 2;
+            }
+            
+            .bottle {
+                width: 60px;
+                height: 160px;
+                background: linear-gradient(45deg, #8B4513, #654321);
+                border-radius: 30px 30px 15px 15px;
+                position: relative;
+                transition: transform 0.5s ease;
+                box-shadow: inset -10px 0 20px rgba(0,0,0,0.3);
+            }
+            
+            .bottle::before {
+                content: '';
+                position: absolute;
+                top: -10px;
+                left: 15px;
+                width: 30px;
+                height: 20px;
+                background: #ff0000;
+                border-radius: 50%;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            }
+            
+            .bottle::after {
+                content: 'Coca Cola';
+                position: absolute;
+                top: 30px;
+                left: 50%;
+                transform: translateX(-50%) rotate(20deg);
+                color: white;
+                font-size: 8px;
+                font-weight: bold;
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            }
+            
+            .product-card:hover .bottle {
+                transform: translateY(-10px) rotate(5deg);
+                animation: bottle-shake 0.5s ease-in-out;
+            }
+            
+            @keyframes bottle-shake {
+                0%, 100% { transform: translateY(-10px) rotate(5deg); }
+                25% { transform: translateY(-12px) rotate(3deg); }
+                75% { transform: translateY(-8px) rotate(7deg); }
+            }
+            
+            .product-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 
+                    0 20px 40px rgba(255,0,0,0.3),
+                    0 0 30px rgba(255,0,0,0.2);
+            }
         </style>
     </head>
     <body>
-        <h1>Day 1</h1>
-        <section class="day">
-            <div class="day1">
-                <div class="b1"><button>Hover Me</button></div>
-                <div class="emoji">
-                    <p id="emoji">😡</p>
-                    <input type="range" min="0" max="4" value="0" oninput="emoji.innerText = ['😡', '😠', '😐', '🙂', '😀'][this.value]"> 
-                </div>
-                <div class="reverse">
-                    <!-- Nội dung lật ngược  -->
-                    <input type="text" oninput="rev.innerText = this.value.split('').reverse().join('')" placeholder="Write somthing here...">
-                    <p>Nội dung sau khi lật: <span id="rev"></span></p>
-                </div>                  
-                <div class="copy">
-                    <input type="text" id="copyText" oninput="copiedText.innerText = this.value" placeholder="Need to copy something?">
-                    <button onclick="navigator.clipboard.writeText(copyText.value); this.innerText='Copied'">Copy</button>
-                    <p>Nội dung đã sao chép: <span id="copiedText"></span></p>
-                </div>
-                <div class="fail-password">
-                    <input type="password" id="password" placeholder="Password">
-                    <button 
-                    onclick="password.classList.add('shake'); 
-                    setTimeout(()=>{
-                        password.classList.remove('shake')
-                    }, 1000);"
-                    >Submit</button>
-                </div>
-            </div>
-        </section>
-        <h1>Day 2</h1>
-        <section class="day">
-            <div class="day2">
-                <div><input type="color"></div>
-                <div>
-                    <ul>
-                        <li title="Home">Home</li>
-                        <li title="Blog">Blog</li>
-                        <li title="About">About</li>
-                    </ul>
-                </div>
-                <div>
-                    <input type="date" onchange="age.innerText=new Date().getFullYear()- new Date(this.value).getFullYear()"> 
-                    <p>Your age: <span id="age"></span></p>
-                </div>
-            </div>
-        </section>
-    </body>
+      <h1>Day 1</h1>
+      <section class="day">
+          <div class="day1">
+              <div class="b1"><button>Hover Me</button></div>
+              <div class="emoji">
+                  <p id="emoji">😡</p>
+                  <input type="range" min="0" max="4" value="0" oninput="emoji.innerText = ['😡', '😠', '😐', '🙂', '😀'][this.value]"> 
+              </div>
+              <div class="reverse">
+                  <!-- Nội dung lật ngược  -->
+                  <input type="text" oninput="rev.innerText = this.value.split('').reverse().join('')" placeholder="Write somthing here...">
+                  <p>Nội dung sau khi lật: <span id="rev"></span></p>
+              </div>                  
+              <div class="copy">
+                  <input type="text" id="copyText" oninput="copiedText.innerText = this.value" placeholder="Need to copy something?">
+                  <button onclick="navigator.clipboard.writeText(copyText.value); this.innerText='Copied'">Copy</button>
+                  <p>Nội dung đã sao chép: <span id="copiedText"></span></p>
+              </div>
+              <div class="fail-password">
+                  <input type="password" id="password" placeholder="Password">
+                  <button 
+                  onclick="password.classList.add('shake'); 
+                  setTimeout(()=>{
+                      password.classList.remove('shake')
+                  }, 1000);"
+                  >Submit</button>
+              </div>
+          </div>
+      </section>
+      <h1>Day 2</h1>
+      <section class="day">
+          <div class="day2">
+              <div><input type="color"></div>
+              <div>
+                  <ul>
+                      <li title="Home">Home</li>
+                      <li title="Blog">Blog</li>
+                      <li title="About">About</li>
+                  </ul>
+              </div>
+              <div>
+                  <input type="date" onchange="TinhTuoi(this.value)"> 
+                  <p>Your age: <span id="age"></span></p>
+              </div>
+              <div>
+                <ul class="u2">
+                    <!-- li.a*2  -->
+                  <li class="a">item 1</li>
+                  <li class="a">item 2</li>
+                </ul>
+              </div>
+              <div><button class="glow-fill">Hover Me</button></div>              <div>
+                <input type="text" id="text" placeholder="Type something...">
+                <button onclick="speechSynthesis.speak(new SpeechSynthesisUtterance(text.value))">🔊</button>
+              </div>
+              <div class="product-card">
+                  <div class="card-glow"></div>
+                  <div class="card-content">
+                      <div class="product-logo">🥤</div>
+                      <h2>COCACOLA</h2>
+                      <p>Refreshing drink for every moment</p>
+                      <button class="export-btn">Export more</button>
+                  </div>
+                  <div class="product-bottle">
+                      <div class="bottle"></div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <script>
+          // Day 2
+          function TinhTuoi(ngaySinh) {
+              let today = new Date();
+              let birthDate = new Date(ngaySinh);
+              let tuoi = today.getFullYear() - birthDate.getFullYear();
+
+              if (today.getMonth() < birthDate.getMonth() || 
+              (today.getMonth() === birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
+                  tuoi--;
+              }
+              
+              age.innerText = tuoi;
+          }
+      </script>
+    </body>    
 </html>
