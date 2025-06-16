@@ -264,6 +264,117 @@
                     0 20px 40px rgba(255,0,0,0.3),
                     0 0 30px rgba(255,0,0,0.2);
             }
+            
+            /* Dark Mode Styles */
+            body {
+                background-color: #ffffff;
+                color: #333333;
+                transition: all 0.3s ease;
+            }
+            
+            body.dark-mode {
+                background-color: #1a1a1a;
+                color: #ffffff;
+            }
+            
+            body.dark-mode .day1 button {
+                background: #2c5aa0;
+                color: #ffffff;
+            }
+            
+            body.dark-mode .product-card {
+                background: linear-gradient(135deg, #8B0000, #660000);
+                border-color: rgba(255,255,255,0.1);
+            }
+            
+            body.dark-mode input {
+                background-color: #333;
+                color: #fff;
+                border: 1px solid #555;
+            }
+            
+            body.dark-mode input::placeholder {
+                color: #aaa;
+            }
+            
+            /* Toggle Switch Styles */
+            .toggle-container {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin: 20px 0;
+            }
+            
+            .checkbox {
+                display: none;
+            }
+            
+            .toggle-switch {
+                display: inline-block;
+                width: 60px;
+                height: 30px;
+                background: #ccc;
+                border-radius: 15px;
+                position: relative;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            
+            .toggle-switch::before {
+                content: '';
+                position: absolute;
+                top: 3px;
+                left: 3px;
+                width: 24px;
+                height: 24px;
+                background: white;
+                border-radius: 50%;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            }
+            
+            .checkbox:checked + .toggle-switch {
+                background: #007bff;
+            }
+            
+            .checkbox:checked + .toggle-switch::before {
+                transform: translateX(30px);
+            }
+            
+            .toggle-label {
+                font-weight: bold;
+                user-select: none;
+            }
+            
+            /* Dark mode icon animations */
+            .mode-icon {
+                font-size: 20px;
+                transition: all 0.3s ease;
+            }
+            
+            .light-icon {
+                transform: rotate(0deg);
+            }
+            
+            .dark-icon {
+                transform: rotate(180deg);
+                opacity: 0;
+            }
+            
+            body.dark-mode .light-icon {
+                transform: rotate(-180deg);
+                opacity: 0;
+            }
+            
+            body.dark-mode .dark-icon {
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+            
+            /* Smooth transitions for all elements */
+            *, *::before, *::after {
+                transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            }
         </style>
     </head>
     <body>
@@ -335,6 +446,16 @@
                   </div>
               </div>
           </div>
+      </section>      <h1>Day 3</h1>
+      <section class="day">
+        <div class="toggle-container">
+            <span class="mode-icon light-icon">☀️</span>
+            <span class="toggle-label">Light</span>
+            <input type="checkbox" class="checkbox" id="darkModeToggle">
+            <label for="darkModeToggle" class="toggle-switch"></label>
+            <span class="toggle-label">Dark</span>
+            <span class="mode-icon dark-icon">🌙</span>
+        </div>
       </section>
       <script>
           // Day 2
@@ -349,7 +470,35 @@
               }
               
               age.innerText = tuoi;
+          }          // Day 3 - Dark Mode Toggle
+          const checkbox = document.querySelector('.checkbox');
+          const body = document.body;
+          
+          // Check for saved theme preference or default to light mode
+          const currentTheme = localStorage.getItem('theme') || 'light';
+          if (currentTheme === 'dark') {
+              body.classList.add('dark-mode');
+              checkbox.checked = true;
           }
+          
+          checkbox.addEventListener('change', () => {
+              // Toggle dark mode class
+              body.classList.toggle("dark-mode");
+              
+              // Save theme preference
+              const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+              localStorage.setItem('theme', theme);
+              
+              // Add smooth transition effect
+              body.style.transition = 'all 0.3s ease-in-out';
+              
+              // Optional: Add some visual feedback
+              if (body.classList.contains('dark-mode')) {
+                  console.log('🌙 Dark mode activated');
+              } else {
+                  console.log('☀️ Light mode activated');
+              }
+          });
       </script>
     </body>    
 </html>
