@@ -375,6 +375,12 @@
             *, *::before, *::after {
                 transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
             }
+
+            /* Day 4 */
+            .day4 ul {
+                list-style: linear-gradient(45deg, cyan, yellow);
+                color: #080808;
+            }
         </style>
     </head>
     <body>
@@ -429,7 +435,8 @@
                   <li class="a">item 2</li>
                 </ul>
               </div>
-              <div><button class="glow-fill">Hover Me</button></div>              <div>
+              <div><button class="glow-fill">Hover Me</button></div>              
+              <div>
                 <input type="text" id="text" placeholder="Type something...">
                 <button onclick="speechSynthesis.speak(new SpeechSynthesisUtterance(text.value))">🔊</button>
               </div>
@@ -437,7 +444,7 @@
                   <div class="card-glow"></div>
                   <div class="card-content">
                       <div class="product-logo">🥤</div>
-                      <h2>COCACOLA</h2>
+                      <h2>COCA - COLA</h2>
                       <p>Refreshing drink for every moment</p>
                       <button class="export-btn">Export more</button>
                   </div>
@@ -446,7 +453,8 @@
                   </div>
               </div>
           </div>
-      </section>      <h1>Day 3</h1>
+      </section>      
+      <h1>Day 3</h1>
       <section class="day">
         <div class="toggle-container">
             <span class="mode-icon light-icon">☀️</span>
@@ -455,6 +463,21 @@
             <label for="darkModeToggle" class="toggle-switch"></label>
             <span class="toggle-label">Dark</span>
             <span class="mode-icon dark-icon">🌙</span>
+        </div>
+      </section>
+
+      <h1>Day 4</h1>
+      <section class="day">
+        <div class="day4">
+            <div>
+                <ul>
+                    <li class="item">item1</li>
+                    <li class="item">item2</li>
+                    <li class="item">item3</li>
+                    <li class="item">item4</li>
+                    <li class="item">item5</li>
+                </ul>
+            </div>
         </div>
       </section>
       <script>
