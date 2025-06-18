@@ -277,18 +277,21 @@
                 color: #ffffff;
             }
             
-            body.dark-mode .day1 button {
-                background: #2c5aa0;
-                color: #ffffff;
+            body.dark-mode .day1 button,
+            body.dark-mode .day2 .glow-fill,
+            body.dark-mode .export-btn {
+                border-color: #555;
+                background: #333;
+                color: #fff;
             }
             
             body.dark-mode .product-card {
-                background: linear-gradient(135deg, #8B0000, #660000);
+                background: linear-gradient(135deg, #aa0000, #880000);
                 border-color: rgba(255,255,255,0.1);
             }
             
             body.dark-mode input {
-                background-color: #333;
+                background: #333;
                 color: #fff;
                 border: 1px solid #555;
             }
@@ -297,86 +300,53 @@
                 color: #aaa;
             }
             
-            /* Toggle Switch Styles */
-            .toggle-container {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                margin: 20px 0;
+            body.dark-mode .day2 ul {
+                border-color: #555;
+                background: #2a2a2a;
             }
             
-            .checkbox {
-                display: none;
+            body.dark-mode h1 {
+                color: #fff;
             }
             
-            .toggle-switch {
-                display: inline-block;
-                width: 60px;
-                height: 30px;
-                background: #ccc;
-                border-radius: 15px;
-                position: relative;
-                cursor: pointer;
-                transition: all 0.3s ease;
+            /* Additional animations */
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
             }
             
-            .toggle-switch::before {
-                content: '';
-                position: absolute;
-                top: 3px;
-                left: 3px;
-                width: 24px;
-                height: 24px;
-                background: white;
-                border-radius: 50%;
-                transition: all 0.3s ease;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            .section {
+                animation: fadeIn 0.6s ease-out;
             }
             
-            .checkbox:checked + .toggle-switch {
-                background: #007bff;
+            /* Improved hover effects */
+            .day1 button:active {
+                transform: scale(0.95);
             }
             
-            .checkbox:checked + .toggle-switch::before {
-                transform: translateX(30px);
+            .day2 .glow-fill:active {
+                transform: scale(0.98);
             }
             
-            .toggle-label {
-                font-weight: bold;
-                user-select: none;
-            }
-            
-            /* Dark mode icon animations */
-            .mode-icon {
-                font-size: 20px;
-                transition: all 0.3s ease;
-            }
-            
-            .light-icon {
-                transform: rotate(0deg);
-            }
-            
-            .dark-icon {
-                transform: rotate(180deg);
-                opacity: 0;
-            }
-            
-            body.dark-mode .light-icon {
-                transform: rotate(-180deg);
-                opacity: 0;
-            }
-            
-            body.dark-mode .dark-icon {
-                transform: rotate(0deg);
-                opacity: 1;
-            }
-            
-            /* Smooth transitions for all elements */
-            *, *::before, *::after {
-                transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            /* Better responsive design */
+            @media (max-width: 768px) {
+                .day1, .day2 {
+                    flex-direction: column;
+                    gap: 15px;
+                }
+                
+                .product-card {
+                    width: 100%;
+                    max-width: 350px;
+                }
+                
+                .toggle-container {
+                    flex-direction: column;
+                    gap: 10px;
+                }
             }
 
-            /* Day 4 */
+            /* Day 4 styles */
             .day4 {
                 display: flex;
                 flex-direction: column;
@@ -467,7 +437,6 @@
             
             .card-flip:hover .card-inner {
                 transform: rotateY(180deg);
-                cursor: pointer;
             }
             
             .card-front, .card-back {
@@ -494,6 +463,106 @@
                 transform: rotateY(180deg);
             }
             
+            .neon-button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .neon-btn {
+                background: transparent;
+                border: 2px solid #00ff00;
+                color: #00ff00;
+                padding: 15px 30px;
+                font-size: 1.2rem;
+                border-radius: 5px;
+                cursor: pointer;
+                position: relative;
+                transition: all 0.3s ease;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+            
+            .neon-btn:hover {
+                color: #000;
+                background: #00ff00;
+                box-shadow: 
+                    0 0 10px #00ff00,
+                    0 0 20px #00ff00,
+                    0 0 30px #00ff00;
+            }
+            
+            /* Day 5 styles */
+            .day5 {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                align-items: center;
+            }
+            
+            .particle-container {
+                width: 400px;
+                height: 200px;
+                background: #000;
+                border-radius: 10px;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .wave-animation {
+                width: 300px;
+                height: 100px;
+                position: relative;
+                background: linear-gradient(to bottom, #87CEEB, #4682B4);
+                border-radius: 10px;
+                overflow: hidden;
+            }
+            
+            .wave {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 200%;
+                height: 20px;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+                border-radius: 50%;
+                animation: wave-move 3s ease-in-out infinite;
+                transform-origin: center;
+            }
+            
+            .wave:nth-child(1) { animation-delay: 0s; opacity: 0.7; }
+            .wave:nth-child(2) { animation-delay: 1s; opacity: 0.5; }
+            .wave:nth-child(3) { animation-delay: 2s; opacity: 0.3; }
+            
+            @keyframes wave-move {
+                0%, 100% { transform: translateX(-50%) rotate(0deg); }
+                50% { transform: translateX(-25%) rotate(180deg); }
+            }
+            
+            .music-visualizer {
+                display: flex;
+                gap: 5px;
+                align-items: flex-end;
+                height: 100px;
+            }
+            
+            .bar {
+                width: 20px;
+                background: linear-gradient(to top, #ff0080, #00ff80);
+                border-radius: 10px 10px 0 0;
+                animation: music-bounce 1s ease-in-out infinite;
+            }
+            
+            .bar:nth-child(1) { animation-delay: 0.1s; }
+            .bar:nth-child(2) { animation-delay: 0.2s; }
+            .bar:nth-child(3) { animation-delay: 0.3s; }
+            .bar:nth-child(4) { animation-delay: 0.4s; }
+            .bar:nth-child(5) { animation-delay: 0.5s; }
+            
+            @keyframes music-bounce {
+                0%, 100% { height: 20px; }
+                50% { height: 80px; }
+            }
         </style>
     </head>
     <body>
@@ -548,9 +617,22 @@
                   <li class="a">item 2</li>
                 </ul>
               </div>
-              <div><button class="glow-fill">Hover Me</button></div>              <div>
+              <div><button class="glow-fill">Hover Me</button></div>              
+              <div>
                 <input type="text" id="text" placeholder="Type something...">
                 <button onclick="speechSynthesis.speak(new SpeechSynthesisUtterance(text.value))">🔊</button>
+              </div>
+              <div class="product-card">
+                  <div class="card-glow"></div>
+                  <div class="card-content">
+                      <div class="product-logo">🥤</div>
+                      <h2>COCA - COLA</h2>
+                      <p>Refreshing drink for every moment</p>
+                      <button class="export-btn">Export more</button>
+                  </div>
+                  <div class="product-bottle">
+                      <div class="bottle"></div>
+                  </div>
               </div>
           </div>
       </section>      
@@ -565,10 +647,14 @@
             <span class="mode-icon dark-icon">🌙</span>
         </div>
       </section>
-      <h1>Day 4 + 5</h1>
-      <section class="day4">
+      
+      <h1>Day 4</h1>
+      <section class="day">
         <div class="day4">
-
+            <div class="gradient-text">
+                <h2>Gradient Text Effect</h2>
+                <p>Beautiful gradient text with animation</p>
+            </div>
             <div class="typing-effect">
                 <span id="typing-text"></span>
                 <span class="cursor">|</span>
@@ -580,23 +666,37 @@
             <div class="card-flip">
                 <div class="card-inner">
                     <div class="card-front">
-                        <h3>Thẻ bài lật</h3>
-                        <p>Đưa chuột vào để lật ei</p>
+                        <h3>Front Side</h3>
+                        <p>Hover to flip</p>
                     </div>
                     <div class="card-back">
-                        <h3>Tuyệt vời</h3>
-                        <p style="padding: 0 20px;">Chúc bạn may mắn vào lần truy cập sau! :)))))))))</p>
+                        <h3>Back Side</h3>
+                        <p>Card flipped!</p>
                     </div>
                 </div>
             </div>
+            <div class="neon-button">
+                <button class="neon-btn">Neon Effect</button>
+            </div>
         </div>
       </section>
-
+      
       <h1>Day 5</h1>
-      <section class="day5">
-        <div class="day">
-            <!-- <button hidden class="btnm"></button> -->
-             <!-- Ẩn nút này đi -->
+      <section class="day">
+        <div class="day5">
+            <div class="particle-container" id="particles"></div>
+            <div class="wave-animation">
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+            </div>
+            <div class="music-visualizer">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
         </div>
       </section>
       <script>
@@ -612,8 +712,7 @@
               }
               
               age.innerText = tuoi;
-          }          
-          // Day 3 - Dark Mode Toggle
+          }          // Day 3 - Dark Mode Toggle
           const checkbox = document.querySelector('.checkbox');
           const body = document.body;
           
@@ -642,15 +741,13 @@
                   console.log('☀️ Light mode activated');
               }
           });
-
-
-          // day 4
+          
           // Day 4 - Typing Effect
           const texts = [
-              "Hôm nay là ngày thứ 5 của Mel!",
-              "Một điều tuyệt vời...",
-              "Không phải chỉ là hôm nay!",
-              "Ngày mai cũng sẽ tuyệt vời!"
+              "Welcome to Day 4!",
+              "Creating amazing animations...",
+              "With CSS and JavaScript!",
+              "Learning web development!"
           ];
           let textIndex = 0;
           let charIndex = 0;
@@ -676,13 +773,59 @@
                   isDeleting = false;
                   textIndex = (textIndex + 1) % texts.length;
               }
-                const typingSpeed = isDeleting ? 50 : 100;
+              
+              const typingSpeed = isDeleting ? 50 : 100;
               setTimeout(typeWriter, typingSpeed);
           }
           
-          // Khởi động typing effect khi trang load
-          typeWriter();
+          // Day 5 - Particle System
+          function createParticle() {
+              const container = document.getElementById('particles');
+              if (!container) return;
+              
+              const particle = document.createElement('div');
+              particle.style.position = 'absolute';
+              particle.style.width = '3px';
+              particle.style.height = '3px';
+              particle.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+              particle.style.borderRadius = '50%';
+              particle.style.left = Math.random() * 400 + 'px';
+              particle.style.top = Math.random() * 200 + 'px';
+              particle.style.animation = 'particle-float 3s ease-out forwards';
+              
+              container.appendChild(particle);
+              
+              setTimeout(() => {
+                  if (particle.parentNode) {
+                      particle.parentNode.removeChild(particle);
+                  }
+              }, 3000);
+          }
           
+          // Initialize effects when page loads
+          document.addEventListener('DOMContentLoaded', () => {
+              // Start typing effect
+              setTimeout(typeWriter, 1000);
+              
+              // Start particle system
+              setInterval(createParticle, 200);
+          });
+          
+          // Add particle animation keyframes via JavaScript
+          const style = document.createElement('style');
+          style.textContent = `
+              @keyframes particle-float {
+                  0% {
+                      opacity: 1;
+                      transform: translateY(0) scale(1);
+                  }
+                  100% {
+                      opacity: 0;
+                      transform: translateY(-100px) scale(0);
+                  }
+              }
+          `;
+          document.head.appendChild(style);
       </script>
     </body>    
 </html>
