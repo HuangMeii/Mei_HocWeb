@@ -377,10 +377,123 @@
             }
 
             /* Day 4 */
-            .day4 ul {
-                list-style: linear-gradient(45deg, cyan, yellow);
-                color: #080808;
+            .day4 {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                align-items: center;
             }
+            
+            .gradient-text {
+                background: linear-gradient(90deg, #ff0000, #ff7300, #ffeb00, #a8ff00, #00ff00);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-size: 2rem;
+                font-weight: bold;
+                text-align: center;
+                animation: gradient-animation 3s ease infinite;
+            }
+            
+            @keyframes gradient-animation {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+            
+            .typing-effect {
+                font-family: 'Courier New', monospace;
+                font-size: 1.5rem;
+                color: #333;
+            }
+            
+            body.dark-mode .typing-effect {
+                color: #fff;
+            }
+            
+            .cursor {
+                animation: blink 1s infinite;
+            }
+            
+            @keyframes blink {
+                0%, 50% { opacity: 1; }
+                51%, 100% { opacity: 0; }
+            }
+            
+            .progress-bar {
+                width: 300px;
+                height: 30px;
+                background: #e0e0e0;
+                border-radius: 15px;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .progress-fill {
+                height: 100%;
+                background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+                border-radius: 15px;
+                width: 0%;
+                animation: progress-load 3s ease-in-out infinite;
+            }
+            
+            @keyframes progress-load {
+                0% { width: 0%; }
+                50% { width: 100%; }
+                100% { width: 0%; }
+            }
+            
+            .progress-text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-weight: bold;
+                color: #333;
+            }
+            
+            .card-flip {
+                perspective: 1000px;
+                width: 200px;
+                height: 150px;
+            }
+            
+            .card-inner {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                transform-style: preserve-3d;
+                transition: transform 0.6s;
+            }
+            
+            .card-flip:hover .card-inner {
+                transform: rotateY(180deg);
+                cursor: pointer;
+            }
+            
+            .card-front, .card-back {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                backface-visibility: hidden;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+            
+            .card-front {
+                background: linear-gradient(45deg, #667eea, #764ba2);
+                color: white;
+            }
+            
+            .card-back {
+                background: linear-gradient(45deg, #f093fb, #f5576c);
+                color: white;
+                transform: rotateY(180deg);
+            }
+            
         </style>
     </head>
     <body>
@@ -435,22 +548,9 @@
                   <li class="a">item 2</li>
                 </ul>
               </div>
-              <div><button class="glow-fill">Hover Me</button></div>              
-              <div>
+              <div><button class="glow-fill">Hover Me</button></div>              <div>
                 <input type="text" id="text" placeholder="Type something...">
                 <button onclick="speechSynthesis.speak(new SpeechSynthesisUtterance(text.value))">🔊</button>
-              </div>
-              <div class="product-card">
-                  <div class="card-glow"></div>
-                  <div class="card-content">
-                      <div class="product-logo">🥤</div>
-                      <h2>COCA - COLA</h2>
-                      <p>Refreshing drink for every moment</p>
-                      <button class="export-btn">Export more</button>
-                  </div>
-                  <div class="product-bottle">
-                      <div class="bottle"></div>
-                  </div>
               </div>
           </div>
       </section>      
@@ -465,18 +565,29 @@
             <span class="mode-icon dark-icon">🌙</span>
         </div>
       </section>
-
-      <h1>Day 4</h1>
-      <section class="day">
+      <h1>Day 4 + 5</h1>
+      <section class="day4">
         <div class="day4">
-            <div>
-                <ul>
-                    <li class="item">item1</li>
-                    <li class="item">item2</li>
-                    <li class="item">item3</li>
-                    <li class="item">item4</li>
-                    <li class="item">item5</li>
-                </ul>
+
+            <div class="typing-effect">
+                <span id="typing-text"></span>
+                <span class="cursor">|</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+                <span class="progress-text">Loading...</span>
+            </div>
+            <div class="card-flip">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h3>Thẻ bài lật</h3>
+                        <p>Đưa chuột vào để lật ei</p>
+                    </div>
+                    <div class="card-back">
+                        <h3>Tuyệt vời</h3>
+                        <p style="padding: 0 20px;">Chúc bạn may mắn vào lần truy cập sau! :)))))))))</p>
+                    </div>
+                </div>
             </div>
         </div>
       </section>
@@ -493,7 +604,8 @@
               }
               
               age.innerText = tuoi;
-          }          // Day 3 - Dark Mode Toggle
+          }          
+          // Day 3 - Dark Mode Toggle
           const checkbox = document.querySelector('.checkbox');
           const body = document.body;
           
@@ -522,6 +634,47 @@
                   console.log('☀️ Light mode activated');
               }
           });
+
+
+          // day 4
+          // Day 4 - Typing Effect
+          const texts = [
+              "Hôm nay là ngày thứ 5 của Mel!",
+              "Một điều tuyệt vời...",
+              "Không phải chỉ là hôm nay!",
+              "Ngày mai cũng sẽ tuyệt vời!"
+          ];
+          let textIndex = 0;
+          let charIndex = 0;
+          let isDeleting = false;
+          
+          function typeWriter() {
+              const currentText = texts[textIndex];
+              const typingElement = document.getElementById('typing-text');
+              
+              if (!typingElement) return;
+              
+              if (isDeleting) {
+                  typingElement.textContent = currentText.substring(0, charIndex - 1);
+                  charIndex--;
+              } else {
+                  typingElement.textContent = currentText.substring(0, charIndex + 1);
+                  charIndex++;
+              }
+              
+              if (!isDeleting && charIndex === currentText.length) {
+                  setTimeout(() => isDeleting = true, 1000);
+              } else if (isDeleting && charIndex === 0) {
+                  isDeleting = false;
+                  textIndex = (textIndex + 1) % texts.length;
+              }
+                const typingSpeed = isDeleting ? 50 : 100;
+              setTimeout(typeWriter, typingSpeed);
+          }
+          
+          // Khởi động typing effect khi trang load
+          typeWriter();
+          
       </script>
     </body>    
 </html>
