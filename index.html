@@ -3,6 +3,9 @@
     <head>
         <title>Mei học web</title>
         <style>
+            .day{
+                margin-bottom: 60px;
+            }
             .day1{
                 display: flex;
                 gap: 20px;
@@ -493,7 +496,52 @@
                 color: white;
                 transform: rotateY(180deg);
             }
+            /* Day 5 */
+            .day5 {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+                padding: 20px;
+            }
             
+            #box {
+                width: 150px;
+                height: 150px;
+                border: 2px solid #333;
+                border-radius: 10px;
+                background: #f0f0f0;
+                transition: background 0.3s ease;
+                margin-bottom: 10px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+            
+            body.dark-mode #box {
+                border-color: #666;
+                background: #2a2a2a;
+            }
+            
+            .day5 input {
+                padding: 10px 15px;
+                border: 2px solid #ddd;
+                border-radius: 5px;
+                font-size: 1rem;
+                text-align: center;
+                width: 200px;
+                transition: border-color 0.3s ease;
+            }
+            
+            .day5 input:focus {
+                outline: none;
+                border-color: #007bff;
+                box-shadow: 0 0 5px rgba(0,123,255,0.3);
+            }
+            
+            body.dark-mode .day5 input {
+                background: #333;
+                color: #fff;
+                border-color: #555;
+            }
         </style>
     </head>
     <body>
@@ -596,7 +644,23 @@
       <section class="day5">
         <div class="day">
             <!-- <button hidden class="btnm"></button> -->
-             <!-- Ẩn nút này đi -->
+             <!-- Ẩn nút này đi -->            
+              <div>
+                <input id="language-input" list="language-options" placeholder="Select language">
+                <datalist id="language-options">
+                    <option value="Java"></option>
+                    <option value="JavaScript"></option>
+                    <option value="PHP"></option>
+                    <option value="Python"></option>
+                </datalist>
+            </div>
+        </div>
+      </section>
+      <h1>Day 6</h1>
+      <section class="day6">
+        <div class="day">
+            <div id="box"></div>
+            <input oninput="box.style.background = this.value" placeholder="e.g. red">
         </div>
       </section>
       <script>
