@@ -663,6 +663,13 @@
             <input oninput="box.style.background = this.value" placeholder="e.g. red">
         </div>
       </section>
+      <h1>Day 7</h1>
+      <section class="day7">
+        <div class="day">
+            <textarea oninput="count.innerText = this.value.trim()? this.value.trim().split(/\s+/).length: 0" placeholder="Type here ..."></textarea>
+            <p>Words: <span id="count">0</span></p>
+        </div>
+      </section>
       <script>
           // Day 2
           function TinhTuoi(ngaySinh) {
