@@ -107,7 +107,7 @@
                 font-weight: bold;
                 background: #0ff;
             }
-            .day2 input{
+            .day2 input, .day8 input{
                 padding: 5px 10px;
             }
             
@@ -668,6 +668,18 @@
         <div class="day">
             <textarea oninput="count.innerText = this.value.trim()? this.value.trim().split(/\s+/).length: 0" placeholder="Type here ..."></textarea>
             <p>Words: <span id="count">0</span></p>
+        </div>
+      </section>
+      <h1>Day 8</h1>
+      <section class="day8">
+        <div class="day">
+            <div class="qr-generator">
+                <input id="qr" placeholder="Enter URL or text" type="text">
+                <button onclick="document.getElementById('qrimg').src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data='+encodeURIComponent(document.getElementById('qr').value); document.getElementById('qrimg').style.display='block';">Generate QR Code</button>
+                <div class="qr-result">
+                    <img id="qrimg" alt="QR Code will appear here" style="display: none;">
+                </div>
+            </div>
         </div>
       </section>
       <script>
